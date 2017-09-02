@@ -45,10 +45,60 @@ return
 
 ;Cancer
 
-^+!l::
-Send lmao xd lol rofl ialmaorn roflmao XD lawl Cx
+::;xd::
+	SendInput, lmao xd lol rofl ialmaorn roflmao XD lawl Cx
+	Sleep, 15
+	Send, {Enter}
 return
 
-^+!C::
-Send England is my city.
+;England is my city.
+
+::;nick::
+	SendInput, England is my city.
+	Sleep, 15
+	Send, {Enter}
+return
+
+;markdown
+
+^+m::
+Send, ``````{Space}
+return
+
+;markdown (rufus)
+
+::;md::
+send, ``````{Space}
+InputBox, varMark, Enter text
+Send, %varMark%
+send, ``````{Space}
+Send, {Enter}
+return
+
+;Window-dragging with the Superkey
+
+#LButton::
+
+CoordMode, Mouse, Relative
+MouseGetPos, cur_win_x, cur_win_y, window_id
+WinGet, window_minmax, MinMax, ahk_id %window_id%
+
+if window_minmax <> 0
+{
+  return
+}
+
+CoordMode, Mouse, Screen
+SetWinDelay, 0
+
+loop
+{
+  if !GetKeyState("LButton", "P")
+  {
+    break
+  }
+  MouseGetPos, cur_x, cur_y
+  WinMove, ahk_id %window_id%,, (cur_x - cur_win_x), (cur_y - cur_win_y)
+}
+
 return
