@@ -43,10 +43,35 @@ return
 Shutdown, 0
 return
 
+; Page Down remap
+
+PgDn::
+return
+
+; Page Up remap
+
+PgUp::
+return
+
+; End remap
+
+End::
+return
+
+;Home remap
+
+Home::
+return
+
+;Insert remap
+
+Ins::
+return
+
 ;Cancer
 
 ::;xd::
-	SendInput, lmao xd lol rofl ialmaorn roflmao XD lawl Cx
+	Send, lmao xd lol rofl ialmaorn roflmao XD lawl Cx
 	Sleep, 15
 	Send, {Enter}
 return
@@ -54,7 +79,7 @@ return
 ;England is my city.
 
 ::;nick::
-	SendInput, England is my city.
+	Send, England is my city.
 	Sleep, 15
 	Send, {Enter}
 return
