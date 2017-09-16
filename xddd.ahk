@@ -100,6 +100,23 @@ send, ``````{Space}
 Send, {Enter}
 return
 
+; processing size 
+
+::;psize::
+    send, void setup() 
+    send, {Space}
+    sendRaw, {
+    send, {Enter}
+    send, {Tab}
+    send,   size(500, 500);
+    send, {Enter}
+    send,   surface.setResizable(true);
+    send, {Enter}
+    send, {Backspace}
+    send, {Backspace}
+    sendRaw, }
+return
+
 ;Window-dragging with the Superkey
 
 #LButton::
