@@ -117,6 +117,27 @@ return
     sendRaw, }
 return
 
+; Lenny
+::;lenny::( ͡° ͜ʖ ͡°)
+::;sadlenny::( ͡° ʖ̯ ͡°)
+::;runny::ᕕ( ͡° ͜ʖ ͡° )ᕗ
+::;menny::( ͠° ͟ʖ ͡°)
+::;wenny::( ͡~ ͜ʖ ͡°)
+::;plenny::͡° ͜ʖ ͡°
+::;stony::( ͡ຈ ͜ʖ ͡ຈ)
+::;ilny::( ͡° _ʖ ͡°)
+::;wutty::( ͝סּ ͜ʖ͡סּ)
+::;silenny::( ͡^ ͜ʖ ͡^ )
+::;stary::( ͡o ͜ʖ ͡o)
+return
+
+; Gary
+::;gary::ᕕ( ᐛ )ᕗ
+::;regary::ᕕ( ᐕ )ᕗ
+::;speedygary::三三ᕕ( ᐛ )ᕗ
+::;spidgary::/╲/\(╭ ᐛ ╮)/\╱\
+return
+
 ;Window-dragging with the Superkey
 
 #LButton::
