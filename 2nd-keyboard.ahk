@@ -104,7 +104,7 @@ a::return
 s::
 	Run "C:\Program Files (x86)\Steam\Steam.exe"
 return
-d::return
+
 
 
 
@@ -189,6 +189,10 @@ if toggle := !toggle
    WinHide ahk_class Shell_TrayWnd
 else
    WinShow ahk_class Shell_TrayWnd
+return
+
+d::
+	Run "%UserProfile%\AppData\Local\DiscordCanary\app-0.0.164\DiscordCanary.exe"
 return
 
 f1::TaskbarMove("Top")
