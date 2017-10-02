@@ -138,6 +138,27 @@ return
 ::;spidgary::/╲/\(╭ ᐛ ╮)/\╱\
 return
 
+^+!r::
+    Process, Close, voicemeeterpro.exe
+    Sleep, 500
+    run, C:\Program Files (x86)\VB\Voicemeeter\voicemeeterpro.exe
+return
+
+NumpadDot & NumpadSub::
+send {Media_Next}
+return
+NumpadDot & NumpadDiv::
+send {Media_Prev}
+return
+NumpadDot & NumpadMult::
+send {Media_Play_Pause}
+return
+NumpadDot & NumpadAdd::
+send {Media_Stop}
+return
+NumpadDot::
+return
+
 ;Window-dragging with the Superkey
 
 #LButton::
