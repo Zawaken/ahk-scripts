@@ -122,9 +122,7 @@ enter::return
 Lshift::return
 z::return
 x::
-	SendInput, lmao xd lol rofl ialmaorn roflmao XD lawl Cx
-	Sleep, 15
-	Send, {Enter}
+	SendInput, lmao xd lol rofl ialmaorn roflmao XD lawl Cx {Enter}
 return
 c::return
 v::return
@@ -192,7 +190,12 @@ else
 return
 
 d::
+IfWinNotExist, ahk_exe DiscordCanary.exe
 	Run "%UserProfile%\AppData\Local\DiscordCanary\app-0.0.164\DiscordCanary.exe"
+if WinActive("ahk_exe DiscordCanary.exe")
+    send, ^{tab}
+else
+    WinActivate ahk_exe DiscordCanary.exe
 return
 
 f1::TaskbarMove("Top")
