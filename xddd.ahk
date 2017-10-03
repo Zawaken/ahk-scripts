@@ -3,6 +3,11 @@
 +Esc::reload
 return
 
+; Notepad++
+^+n::
+Run "C:\Program Files\Notepad++\notepad++.exe"
+return
+
 ;Launch Firefox
 
 ^+f::
@@ -45,28 +50,23 @@ return
 
 ; Page Down remap
 
-PgDn::
-return
+PgDn::return
 
 ; Page Up remap
 
-PgUp::
-return
+PgUp::return
 
 ; End remap
 
-End::
-return
+End::return
 
 ;Home remap
 
-Home::
-return
+Home::return
 
 ;Insert remap
 
-Ins::
-return
+Ins::return
 
 ;Cancer
 
