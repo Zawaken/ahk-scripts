@@ -68,6 +68,10 @@ return
 Ins::
 return
 
+; protonmail
+
+::;proton::zawaken@protonmail.com
+
 ;Cancer
 
 ::;xd::
