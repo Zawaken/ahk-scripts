@@ -3,13 +3,9 @@
 +Esc::reload
 return
 
-;capslock modifier
-
 SetCapsLockState, AlwaysOff
- 
-; Allow normal CapsLock functionality to be toggled by Alt+CapsLock:
 !CapsLock::
-    GetKeyState, capsstate, CapsLock, T ;(T indicates a Toggle. capsstate is an arbitrary varible name)
+    GetKeyState, capsstate, CapsLock, T 
     if capsstate = U
         SetCapsLockState, AlwaysOn
     else
@@ -59,8 +55,6 @@ Home::return
 Ins::return
 
 ::;proton::zawaken@protonmail.com
-
-;Cancer
 
 ::;xd::
 	Send, lmao xd lol rofl ialmaorn roflmao XD lawl Cx
