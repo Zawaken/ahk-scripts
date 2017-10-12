@@ -51,7 +51,6 @@ numpadEnter::return
 
 numpadDot::return
 
-
 F3::return
 F4::return
 F5::return
@@ -60,9 +59,6 @@ F7::return
 F9::return
 F8::return
 F10::return
-
-;;;;;next row;;;;;
-
 `::return
 1::return
 2::return
@@ -77,36 +73,24 @@ F10::return
 -::return
 =::return
 backspace::return
-
-;;;;;next row;;;;;
-
 tab::return
 q::return
 w::return
 e::return
-r::return
 u::return
 i::return
-
 o::
 	Run "%UserProfile%\AppData\Local\osu!\osu!.exe"
 return
-
 p::return
 [::return
 ]::return
 \::return
-
-;;;;;next row;;;;;
-
 capslock::return
 a::return
 s::
 	Run "C:\Program Files (x86)\Steam\Steam.exe"
 return
-
-
-
 
 g::return
 h::return
@@ -116,9 +100,6 @@ l::return
 `;::return
 '::return
 enter::return
-
-;;;;;next row;;;;;
-
 Lshift::return
 z::return
 x::
@@ -133,9 +114,6 @@ m::return
 .::return
 /::return
 Rshift::return
-
-;;;;;next row;;;;;
-
 Lctrl::return
 Lwin::return
 Lalt::return
@@ -144,20 +122,14 @@ Ralt::return
 Rwin::return
 appskey::return
 Rctrl::return
-
-;;;;;next area;;;;;
-
 PrintScreen::return
 ScrollLock::return
-
 insert::return
 home::return
 pgup::return
-
 delete::return
 end::return
 pgdn::return
-
 up::return
 down::return
 left::return
@@ -188,6 +160,8 @@ if toggle := !toggle
 else
    WinShow ahk_class Shell_TrayWnd
 return
+
+r::reload
 
 d::
 IfWinNotExist, ahk_exe DiscordCanary.exe
