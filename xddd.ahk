@@ -55,6 +55,8 @@ Home::return
 Ins::return
 
 ::;proton::zawaken@protonmail.com
+::;gmail::rsk1997@gmail.com
+return
 
 ::;xd::
 	Send, lmao xd lol rofl ialmaorn roflmao XD lawl Cx
