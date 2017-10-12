@@ -1,74 +1,62 @@
-﻿;Reload
+﻿#SingleInstance force
 
 +Esc::reload
 return
 
-; Notepad++
+;capslock modifier
+
+SetCapsLockState, AlwaysOff
+ 
+; Allow normal CapsLock functionality to be toggled by Alt+CapsLock:
+!CapsLock::
+    GetKeyState, capsstate, CapsLock, T ;(T indicates a Toggle. capsstate is an arbitrary varible name)
+    if capsstate = U
+        SetCapsLockState, AlwaysOn
+    else
+        SetCapsLockState, AlwaysOff
+    return
+
+CapsLock & f:: 
+    Send, Fuck
+    Sleep, 15
+    Send, {Enter}
+return
+
 ^+n::
 Run "C:\Program Files\Notepad++\notepad++.exe"
 return
-
-;Launch Firefox
 
 ^+f::
 Run Firefox.exe
 return
 
-;launch cmder
-
 ^!t::
 Run cmder.exe
 return
-
-;launch discord
 
 ^+d::
 Run C:\Users\Zawaken\AppData\Local\Discord\app-0.0.298\Discord.exe
 return
 
-;close programs with win + q
-
 $#q::!F4
 return
 
-;disable super key
-
 ~LWin Up:: 
 return
-
-;Open run dialog
 
 #r::
 Run %appdata%\Microsoft\Windows\Start Menu\Programs\System Tools\Run.lnk
 return
 
-;Win+L (logoff)
-
 #l::
 Shutdown, 0
 return
 
-; Page Down remap
-
 PgDn::return
-
-; Page Up remap
-
 PgUp::return
-
-; End remap
-
 End::return
-
-;Home remap
-
 Home::return
-
-;Insert remap
-
 Ins::return
-
-; protonmail
 
 ::;proton::zawaken@protonmail.com
 
@@ -80,21 +68,15 @@ Ins::return
 	Send, {Enter}
 return
 
-;England is my city.
-
 ::;nick::
 	Send, England is my city.
 	Sleep, 15
 	Send, {Enter}
 return
 
-;markdown
-
 ^+m::
 Send, ``````{Space}
 return
-
-;markdown (rufus)
 
 ::;md::
 send, ``````{Space}
@@ -103,8 +85,6 @@ Send, %varMark%
 send, ``````{Space}
 Send, {Enter}
 return
-
-; processing size 
 
 ::;psize::
     send, void setup() 
@@ -121,7 +101,6 @@ return
     sendRaw, }
 return
 
-; Lenny
 ::;lenny::( ͡° ͜ʖ ͡°)
 ::;sadlenny::( ͡° ʖ̯ ͡°)
 ::;runny::ᕕ( ͡° ͜ʖ ͡° )ᕗ
@@ -133,9 +112,6 @@ return
 ::;wutty::( ͝סּ ͜ʖ͡סּ)
 ::;silenny::( ͡^ ͜ʖ ͡^ )
 ::;stary::( ͡o ͜ʖ ͡o)
-return
-
-; Gary
 ::;gary::ᕕ( ᐛ )ᕗ
 ::;regary::ᕕ( ᐕ )ᕗ
 ::;speedygary::三三ᕕ( ᐛ )ᕗ
@@ -162,8 +138,6 @@ send {Media_Stop}
 return
 NumpadDot::
 return
-
-;Window-dragging with the Superkey
 
 #LButton::
 
