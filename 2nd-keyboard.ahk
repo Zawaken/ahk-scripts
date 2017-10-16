@@ -156,12 +156,7 @@ else
     WinActivate ahk_class YandexBrowser_WidgetWin_1
 return
 
-t::
-if toggle := !toggle
-   WinHide ahk_class Shell_TrayWnd
-else
-   WinShow ahk_class Shell_TrayWnd
-return
+t::Run cmder.exe
 
 r::reload
 
