@@ -1,9 +1,9 @@
 ﻿#SingleInstance force
 
-+Esc::reload
-return
-
 SetCapsLockState, AlwaysOff
+
++Esc::reload
+
 !CapsLock::
     GetKeyState, capsstate, CapsLock, T 
     if capsstate = U
@@ -13,7 +13,7 @@ SetCapsLockState, AlwaysOff
     return
 
 CapsLock & f:: 
-    Send, Fuck
+    SendInput, Fuck
     Sleep, 15
     Send, {Enter}
 return
