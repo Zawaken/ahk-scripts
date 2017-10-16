@@ -34,18 +34,10 @@ return
 Run C:\Users\Zawaken\AppData\Local\Discord\app-0.0.298\Discord.exe
 return
 
-$#q::!F4
-return
-
-~LWin Up:: 
-return
-
-#r::
-Run %appdata%\Microsoft\Windows\Start Menu\Programs\System Tools\Run.lnk
-return
-
-#l::
-Shutdown, 0
+~LWin Up::return
+#l::Shutdown, 0
+#q::!F4
+#r::Run %appdata%\Microsoft\Windows\Start Menu\Programs\System Tools\Run.lnk
 return
 
 PgDn::return
