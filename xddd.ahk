@@ -1,94 +1,34 @@
-﻿#SingleInstance force
+﻿; -------------------------------------
+; Script behaviour
+; -------------------------------------
+#SingleInstance force																					; Skip replace dialog.
+#Persistent																								; Keeps a script running permanently.
+SetCapsLockState, AlwaysOff																				; Set CapsLock to always be toggled off.
+SetNumLockState, AlwaysOn																				; Set NumLock to always be toggled on.
 
-SetCapsLockState, AlwaysOff
++Esc::reload																							; Reload script with hotkey.
 
-+Esc::reload
-
-!CapsLock::
-    GetKeyState, capsstate, CapsLock, T 
-    if capsstate = U
-        SetCapsLockState, AlwaysOn
-    else
-        SetCapsLockState, AlwaysOff
-    return
-
-CapsLock & f:: 
-    SendInput, Fuck
-    Sleep, 15
-    Send, {Enter}
+; -------------------------------------
+; Super hotkeys(win+r etc.)
+; -------------------------------------
+~LWin Up::return																						; Disables super in a way that it still works but doesn't open the startmenu.
+#l::Shutdown, 0																							; Shortcut for locking the Computer.
+#r::Run %appdata%\Microsoft\Windows\Start Menu\Programs\System Tools\Run.lnk							; Shortcut to open the run dialog.
+#q::!F4																									; Super+Q to ALT+F4 (xKill if SuperF4 is running).
 return
 
-^+n::
-Run "C:\Program Files\Notepad++\notepad++.exe"
-return
+; -------------------------------------
+; Home area remap
+; -------------------------------------
+PgDn::return																							; Currently disables PageDown.
+PgUp::return																							; Currently disables PageUp.
+End::return																								; Currently disables End.
+Home::return																							; Currently disables Home.
+Ins::return																								; Currently disables Insert.
 
-^+f::
-Run Firefox.exe
-return
-
-^!t::
-Run cmder.exe
-return
-
-^+d::
-Run C:\Users\Zawaken\AppData\Local\Discord\app-0.0.298\Discord.exe
-return
-
-~LWin Up::return
-#l::Shutdown, 0
-#q::!F4
-#r::Run %appdata%\Microsoft\Windows\Start Menu\Programs\System Tools\Run.lnk
-return
-
-PgDn::return
-PgUp::return
-End::return
-Home::return
-Ins::return
-
-::;proton::zawaken@protonmail.com
-::;gmail::rsk1997@gmail.com
-return
-
-::;xd::
-	Send, lmao xd lol rofl ialmaorn roflmao XD lawl Cx
-	Sleep, 15
-	Send, {Enter}
-return
-
-::;nick::
-	Send, England is my city.
-	Sleep, 15
-	Send, {Enter}
-return
-
-^+m::
-Send, ``````{Space}
-return
-
-::;md::
-send, ``````{Space}
-InputBox, varMark, Enter text
-Send, %varMark%
-send, ``````{Space}
-Send, {Enter}
-return
-
-::;psize::
-    send, void setup() 
-    send, {Space}
-    sendRaw, {
-    send, {Enter}
-    send, {Tab}
-    send,   size(500, 500);
-    send, {Enter}
-    send,   surface.setResizable(true);
-    send, {Enter}
-    send, {Backspace}
-    send, {Backspace}
-    sendRaw, }
-return
-
+; -------------------------------------
+; Text replacement, and other binds
+; -------------------------------------
 ::;lenny::( ͡° ͜ʖ ͡°)
 ::;sadlenny::( ͡° ʖ̯ ͡°)
 ::;runny::ᕕ( ͡° ͜ʖ ͡° )ᕗ
@@ -104,29 +44,80 @@ return
 ::;regary::ᕕ( ᐕ )ᕗ
 ::;speedygary::三三ᕕ( ᐛ )ᕗ
 ::;spidgary::/╲/\(╭ ᐛ ╮)/\╱\
+:*:;proton::zawaken@protonmail.com
+:*:;gmail::rsk1997@gmail.com
 return
 
+; -------------------------------------
+; Restart Voicemeeter Banana
+; -------------------------------------
 ^+!r::
     Process, Close, voicemeeterpro.exe
     Sleep, 500
     run, C:\Program Files (x86)\VB\Voicemeeter\voicemeeterpro.exe
 return
 
-NumpadDot & NumpadSub::
+; -------------------------------------
+; Numpad Media Controls
+; -------------------------------------
+NumpadDot::return
+NumpadDot & NumpadSub::																					; Next Media.
 send {Media_Next}
 return
-NumpadDot & NumpadDiv::
+NumpadDot & NumpadDiv::																					; Previous Media.
 send {Media_Prev}
 return
-NumpadDot & NumpadMult::
+NumpadDot & NumpadMult::																				; Play/Pause Media.
 send {Media_Play_Pause}
 return
-NumpadDot & NumpadAdd::
+NumpadDot & NumpadAdd::																					; Stop Media.
 send {Media_Stop}
 return
-NumpadDot::
+
+; -------------------------------------
+; Random hotkeys and text replacements
+; -------------------------------------
+^+m::																									; Code markdown.
+Send, ``````{Space}
 return
 
+::;psize::																								; Void Setup in processing
+    send, void setup() 
+    send, {Space}
+    sendRaw, {
+    send, {Enter}
+    send, {Tab}
+    send,   size(500, 500);
+    send, {Enter}
+    send,   surface.setResizable(true);
+    send, {Enter}
+    send, {Backspace}
+    send, {Backspace}
+    sendRaw, }
+return
+
+; -------------------------------------
+; CapsLock Modifier
+; -------------------------------------
+!CapsLock::																								; Alt+ CapsLock Toggles CapsLock even though CapsLockState is set to always be off.
+    GetKeyState, capsstate, CapsLock, T 
+    if capsstate = U
+        SetCapsLockState, AlwaysOn
+    else
+        SetCapsLockState, AlwaysOff
+    return
+
+CapsLock & f:: 
+    SendInput, Fuck
+    Sleep, 15
+    Send, {Enter}
+return
+
+CapsLock & t::Run cmder.exe
+
+; -------------------------------------
+; Super key to move windows
+; -------------------------------------
 #LButton::
 
 CoordMode, Mouse, Relative
