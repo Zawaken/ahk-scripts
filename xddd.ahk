@@ -6,6 +6,7 @@
 SetCapsLockState, AlwaysOff																				; Set CapsLock to always be toggled off.
 SetNumLockState, AlwaysOn																				; Set NumLock to always be toggled on.
 SetWorkingDir %A_ScriptDir%																				; Set persistent Script Directory.
+DetectHiddenWindows, On																					; Make it so that the script detects hidden windows.
 
 +Esc::reload																							; Reload script with hotkey.
 
@@ -53,9 +54,9 @@ return
 ; Restart Voicemeeter Banana
 ; -------------------------------------
 ^+!r::
-    Process, Close, voicemeeterpro.exe																		; Ends the process Voicemeeterpro.exe.
-    Sleep, 500																							; Wait for 500ms.
-    run, C:\Program Files (x86)\VB\Voicemeeter\voicemeeterpro.exe												; Launch VoiceMeeter Banana.
+Process, Close, voicemeeterpro.exe																		; Ends the process Voicemeeterpro.exe.
+Sleep, 500																							; Wait for 500ms.
+run, C:\Program Files (x86)\VB\Voicemeeter\voicemeeterpro.exe												; Launch VoiceMeeter Banana.
 return
 
 ; -------------------------------------
@@ -85,9 +86,9 @@ return
 ^!e::Edit, %A_ScriptName%																				; Edit my shitty script lol.
 
 ::;psize::																							; Void Setup in processing.
-    send, void setup() 
-    send, {Space}
-    sendRaw, {
+send, void setup() 
+send, {Space}
+sendRaw, {
     send, {Enter}
     send, {Tab}
     send,   size(500, 500);
@@ -137,12 +138,29 @@ SetWinDelay, 0
 
 loop
 {
-  if !GetKeyState("LButton", "P")
-  {
-    break
-  }
-  MouseGetPos, cur_x, cur_y
-  WinMove, ahk_id %window_id%,, (cur_x - cur_win_x), (cur_y - cur_win_y)
+	if !GetKeyState("LButton", "P")
+	{
+		break
+	}
+	MouseGetPos, cur_x, cur_y
+	WinMove, ahk_id %window_id%,, (cur_x - cur_win_x), (cur_y - cur_win_y)
 }
 
+return
+
+; -------------------------------------
+; Min/Maximize with hotkey
+; -------------------------------------
+
+#x::																									; Maximize/Restore active window with Super+X.
+WinGet, active_id, ID, A
+WinGet, checkmax, MinMax, A
+If(checkmax == 1) {
+	WinGet, active_id, ID, A
+	WinRestore, ahk_id %active_id%
+} else {
+	WinGetClass, class, ahk_id %active_id%
+	If class not in ahk_class WorkerW,Shell_TrayWnd, Button, SysListView32,Progman,#32768 
+	WinMaximize, ahk_id %active_id%
+}
 return
