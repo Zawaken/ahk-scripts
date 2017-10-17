@@ -12,7 +12,7 @@ SetWorkingDir %A_ScriptDir%																				; Set persistent Script Directory
 ; -------------------------------------
 ; Super hotkeys(win+r etc.)
 ; -------------------------------------
-~LWin Up::return																						; Disables super in a way that it still works but doesn't open the startmenu.
+~LWin Up::return																						; Disables super in a way that it still works but doesn't open the startmenu but still works for hotkeys.
 #l::Shutdown, 0																						; Shortcut for locking the Computer.
 #r::Run %appdata%\Microsoft\Windows\Start Menu\Programs\System Tools\Run.lnk										; Shortcut to open the run dialog.
 #q::!F4																								; Super+Q to ALT+F4 (xKill if SuperF4 is running).
