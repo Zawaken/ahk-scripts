@@ -96,24 +96,24 @@ return
     send, {Enter}
     send, {Backspace}
     send, {Backspace}
-    sendRaw, }
+sendRaw, }
 return
 
 ; -------------------------------------
 ; CapsLock Modifier
 ; -------------------------------------
 !CapsLock::																							; Alt+ CapsLock Toggles CapsLock even though CapsLockState is set to always be off.
-    GetKeyState, capsstate, CapsLock, T 
-    if capsstate = U
-        SetCapsLockState, AlwaysOn
-    else
-        SetCapsLockState, AlwaysOff
-    return
+GetKeyState, capsstate, CapsLock, T 
+if capsstate = U
+	SetCapsLockState, AlwaysOn
+else
+	SetCapsLockState, AlwaysOff
+return
 
 CapsLock & f:: 
-    SendInput, Fuck
-    Sleep, 15
-    Send, {Enter}
+SendInput, Fuck
+Sleep, 15
+Send, {Enter}
 return
 
 CapsLock & t::Run cmder.exe
