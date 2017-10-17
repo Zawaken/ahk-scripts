@@ -2,9 +2,10 @@
 ; Script behaviour
 ; -------------------------------------
 #SingleInstance force																					; Skip replace dialog.
-#Persistent																								; Keeps a script running permanently.
+#Persistent																							; Keeps a script running permanently.
 SetCapsLockState, AlwaysOff																				; Set CapsLock to always be toggled off.
 SetNumLockState, AlwaysOn																				; Set NumLock to always be toggled on.
+SetWorkingDir %A_ScriptDir%																				; Set persistent Script Directory.
 
 +Esc::reload																							; Reload script with hotkey.
 
@@ -12,9 +13,9 @@ SetNumLockState, AlwaysOn																				; Set NumLock to always be toggled 
 ; Super hotkeys(win+r etc.)
 ; -------------------------------------
 ~LWin Up::return																						; Disables super in a way that it still works but doesn't open the startmenu.
-#l::Shutdown, 0																							; Shortcut for locking the Computer.
-#r::Run %appdata%\Microsoft\Windows\Start Menu\Programs\System Tools\Run.lnk							; Shortcut to open the run dialog.
-#q::!F4																									; Super+Q to ALT+F4 (xKill if SuperF4 is running).
+#l::Shutdown, 0																						; Shortcut for locking the Computer.
+#r::Run %appdata%\Microsoft\Windows\Start Menu\Programs\System Tools\Run.lnk										; Shortcut to open the run dialog.
+#q::!F4																								; Super+Q to ALT+F4 (xKill if SuperF4 is running).
 return
 
 ; -------------------------------------
@@ -22,9 +23,9 @@ return
 ; -------------------------------------
 PgDn::return																							; Currently disables PageDown.
 PgUp::return																							; Currently disables PageUp.
-End::return																								; Currently disables End.
+End::return																							; Currently disables End.
 Home::return																							; Currently disables Home.
-Ins::return																								; Currently disables Insert.
+Ins::return																							; Currently disables Insert.
 
 ; -------------------------------------
 ; Text replacement, and other binds
@@ -52,9 +53,9 @@ return
 ; Restart Voicemeeter Banana
 ; -------------------------------------
 ^+!r::
-    Process, Close, voicemeeterpro.exe																	; Ends the process Voicemeeterpro.exe.
+    Process, Close, voicemeeterpro.exe																		; Ends the process Voicemeeterpro.exe.
     Sleep, 500																							; Wait for 500ms.
-    run, C:\Program Files (x86)\VB\Voicemeeter\voicemeeterpro.exe										; Launch VoiceMeeter Banana.
+    run, C:\Program Files (x86)\VB\Voicemeeter\voicemeeterpro.exe												; Launch VoiceMeeter Banana.
 return
 
 ; -------------------------------------
@@ -67,7 +68,7 @@ return
 NumpadDot & NumpadDiv::																					; Previous Media.
 send {Media_Prev}
 return
-NumpadDot & NumpadMult::																				; Play/Pause Media.
+NumpadDot & NumpadMult::																					; Play/Pause Media.
 send {Media_Play_Pause}
 return
 NumpadDot & NumpadAdd::																					; Stop Media.
@@ -77,11 +78,13 @@ return
 ; -------------------------------------
 ; Random hotkeys and text replacements
 ; -------------------------------------
-^+m::																									; Code markdown.
+^+m::																								; Code markdown.
 Send, ``````{Space}
 return
 
-::;psize::																								; Void Setup in processing
+^!e::Edit, %A_ScriptName%																				; Edit my shitty script lol.
+
+::;psize::																							; Void Setup in processing.
     send, void setup() 
     send, {Space}
     sendRaw, {
@@ -99,7 +102,7 @@ return
 ; -------------------------------------
 ; CapsLock Modifier
 ; -------------------------------------
-!CapsLock::																								; Alt+ CapsLock Toggles CapsLock even though CapsLockState is set to always be off.
+!CapsLock::																							; Alt+ CapsLock Toggles CapsLock even though CapsLockState is set to always be off.
     GetKeyState, capsstate, CapsLock, T 
     if capsstate = U
         SetCapsLockState, AlwaysOn
