@@ -47,8 +47,6 @@ Ins::return																							; Currently disables Insert.
 ::;regary::ᕕ( ᐕ )ᕗ
 ::;speedygary::三三ᕕ( ᐛ )ᕗ
 ::;spidgary::/╲/\(╭ ᐛ ╮)/\╱\
-:*:;proton::zawaken@protonmail.com
-:*:;gmail::rsk1997@gmail.com
 return
 
 ; -------------------------------------
