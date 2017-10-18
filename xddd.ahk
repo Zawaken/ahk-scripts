@@ -57,9 +57,9 @@ return
 ; Restart Voicemeeter Banana
 ; -------------------------------------
 ^+!r::
-Process, Close, voicemeeterpro.exe																			; Ends the process Voicemeeterpro.exe.
-Sleep, 500																							; Wait for 500ms.
-run, C:\Program Files (x86)\VB\Voicemeeter\voicemeeterpro.exe													; Launch VoiceMeeter Banana.
+	Process, Close, voicemeeterpro.exe																			; Ends the process Voicemeeterpro.exe.
+	Sleep, 500																							; Wait for 500ms.
+	run, C:\Program Files (x86)\VB\Voicemeeter\voicemeeterpro.exe													; Launch VoiceMeeter Banana.
 return
 
 ; -------------------------------------
@@ -115,9 +115,9 @@ else
 return
 
 CapsLock & f:: 
-SendInput, Fuck
-Sleep, 15
-Send, {Enter}
+	SendInput, Fuck
+	Sleep, 15
+	Send, {Enter}
 return
 
 CapsLock & t::Run cmder.exe
