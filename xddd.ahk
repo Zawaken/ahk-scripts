@@ -149,7 +149,7 @@ loop
 return
 
 ; -------------------------------------
-; Min/Maximize with hotkey
+; Restore/Maximize with hotkey
 ; -------------------------------------
 
 #x::																									; Maximize/Restore active window with Super+X.
