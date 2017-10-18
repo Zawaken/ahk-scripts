@@ -17,6 +17,7 @@ DetectHiddenWindows, On																					; Make it so that the script detects
 #l::Shutdown, 0																						; Shortcut for locking the Computer.
 #r::Run %appdata%\Microsoft\Windows\Start Menu\Programs\System Tools\Run.lnk										; Shortcut to open the run dialog.
 #q::!F4																								; Super+Q to ALT+F4 (xKill if SuperF4 is running).
+#z::WinMinimize, A																						; Minimize Active window with Super+z.
 return
 
 ; -------------------------------------
@@ -54,9 +55,9 @@ return
 ; Restart Voicemeeter Banana
 ; -------------------------------------
 ^+!r::
-Process, Close, voicemeeterpro.exe																		; Ends the process Voicemeeterpro.exe.
+Process, Close, voicemeeterpro.exe																			; Ends the process Voicemeeterpro.exe.
 Sleep, 500																							; Wait for 500ms.
-run, C:\Program Files (x86)\VB\Voicemeeter\voicemeeterpro.exe												; Launch VoiceMeeter Banana.
+run, C:\Program Files (x86)\VB\Voicemeeter\voicemeeterpro.exe													; Launch VoiceMeeter Banana.
 return
 
 ; -------------------------------------
