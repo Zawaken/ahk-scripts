@@ -40,14 +40,17 @@ Sleep, 1500																							; Sleeps for 1.5 Seconds.
 ToolTip																								; Removes the ToolTip.
 Return
 
+; -------------------------------------
+; Resize with Super+RButton
+; -------------------------------------
 #RButton::
 WinGetPos, , , W, H, A
 h -= 2
 w -= 2
 MouseMove, w, h
 MouseClick, Left,,,,,D
-
 return
+
 ; -------------------------------------
 ; Super key to move windows
 ; -------------------------------------
@@ -178,7 +181,7 @@ sendRaw, {
 ; -------------------------------------
 ; CapsLock Modifier
 ; -------------------------------------
-	!CapsLock::																							; Alt+ CapsLock Toggles CapsLock even though CapsLockState is set to always be off.
+	!CapsLock::																						; Alt+ CapsLock Toggles CapsLock even though CapsLockState is set to always be off.
 	GetKeyState, capsstate, CapsLock, T 
 	if capsstate = U
 		SetCapsLockState, AlwaysOn
