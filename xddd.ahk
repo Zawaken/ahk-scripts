@@ -25,6 +25,17 @@ menu, tray, Icon, %I_Icon%																				; Sets the tray icon to the value 
 return
 
 ; -------------------------------------
+; Always on Top
+; -------------------------------------
+#Space::																								; Super+Space to make window stay on top.
+Winset, AlwaysOnTop, Toggle, A																			; Toggles the attribute AlwaysOnTop.
+Toggle := !toggle																						; Variable for tooltip.
+ToolTip, %Toggle%																						; Shows a ToolTip that displays 1 or 0 depending on what state AlwaysOnTop is in.
+Sleep, 1500																							; Sleeps for 1.5 Seconds.
+ToolTip																								; Removes the ToolTip.
+Return
+
+; -------------------------------------
 ; Home area remap
 ; -------------------------------------
 PgDn::return																							; Currently disables PageDown.
@@ -51,15 +62,17 @@ Ins::return																							; Currently disables Insert.
 ::;regary::ᕕ( ᐕ )ᕗ
 ::;speedygary::三三ᕕ( ᐛ )ᕗ
 ::;spidgary::/╲/\(╭ ᐛ ╮)/\╱\
+:*:;proton::zawaken@protonmail.com
+:*:;gmail::rsk1997@gmail.com
 return
 
 ; -------------------------------------
 ; Restart Voicemeeter Banana
 ; -------------------------------------
 ^+!r::
-	Process, Close, voicemeeterpro.exe																			; Ends the process Voicemeeterpro.exe.
-	Sleep, 500																							; Wait for 500ms.
-	run, C:\Program Files (x86)\VB\Voicemeeter\voicemeeterpro.exe													; Launch VoiceMeeter Banana.
+Process, Close, voicemeeterpro.exe																			; Ends the process Voicemeeterpro.exe.
+Sleep, 500																							; Wait for 500ms.
+run, C:\Program Files (x86)\VB\Voicemeeter\voicemeeterpro.exe													; Launch VoiceMeeter Banana.
 return
 
 ; -------------------------------------
@@ -102,12 +115,6 @@ sendRaw, {
     send, {Backspace}
 sendRaw, }
 return
-#Space::Winset, AlwaysOnTop, Toggle, A
-Toggle := !toggle
-ToolTip, %Toggle%
-Sleep, 3000
-ToolTip
-Return
 
 ; -------------------------------------
 ; CapsLock Modifier
