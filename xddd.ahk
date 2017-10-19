@@ -127,11 +127,7 @@ else
 	SetCapsLockState, AlwaysOff
 return
 
-CapsLock & f:: 
-SendInput, Fuck
-Sleep, 15
-Send, {Enter}
-return
+CapsLock & f::SendInput, Fuck {Enter}
 
 CapsLock & t::Run cmder.exe
 
