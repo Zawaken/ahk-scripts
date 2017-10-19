@@ -29,11 +29,70 @@ return
 ; -------------------------------------
 #Space::																								; Super+Space to make window stay on top.
 Winset, AlwaysOnTop, Toggle, A																			; Toggles the attribute AlwaysOnTop.
-Toggle := !toggle																						; Variable for tooltip.
-ToolTip, %Toggle%																						; Shows a ToolTip that displays 1 or 0 depending on what state AlwaysOnTop is in.
+mousegetpos, x, y, fuck
+WinGet, ExStyle, ExStyle, ahk_id %fuck%
+If (ExStyle & 0x8)																						; 0x8 Checks if the window is AlwaysOnTop or not
+	ExStyle = On Top
+Else
+	ExStyle = Not On Top
+ToolTip, %exstyle%																						; Shows a ToolTip that displays AlwaysOnTop or Not AlwaysOnTop depending on what state AlwaysOnTop is in.
 Sleep, 1500																							; Sleeps for 1.5 Seconds.
 ToolTip																								; Removes the ToolTip.
 Return
+
+#RButton::
+WinGetPos, , , W, H, A
+h -= 2
+w -= 2
+MouseMove, w, h
+MouseClick, Left,,,,,D
+
+return
+; -------------------------------------
+; Super key to move windows
+; -------------------------------------
+#LButton::
+
+CoordMode, Mouse, Relative
+MouseGetPos, cur_win_x, cur_win_y, window_id
+WinGet, window_minmax, MinMax, ahk_id %window_id%
+
+if window_minmax <> 0
+{
+	return
+}
+
+CoordMode, Mouse, Screen
+SetWinDelay, 0
+
+loop
+{
+	if !GetKeyState("LButton", "P")
+	{
+		break
+	}
+	MouseGetPos, cur_x, cur_y
+	WinMove, ahk_id %window_id%,, (cur_x - cur_win_x), (cur_y - cur_win_y)
+}
+
+return
+
+; -------------------------------------
+; Restore/Maximize with hotkey
+; -------------------------------------
+
+#x::																									; Maximize/Restore active window with Super+X.
+WinGet, active_id, ID, A
+WinGet, checkmax, MinMax, A
+If(checkmax == 1) {
+	WinGet, active_id, ID, A
+	WinRestore, ahk_id %active_id%
+} else {
+	WinGetClass, class, ahk_id %active_id%
+	If class not in ahk_class WorkerW,Shell_TrayWnd, Button, SysListView32,Progman,#32768 
+		WinMaximize, ahk_id %active_id%
+}
+return
 
 ; -------------------------------------
 ; Home area remap
@@ -105,74 +164,28 @@ return
 send, void setup() 
 send, {Space}
 sendRaw, {
-    send, {Enter}
-    send, {Tab}
-    send,   size(500, 500);
-    send, {Enter}
-    send,   surface.setResizable(true);
-    send, {Enter}
-    send, {Backspace}
-    send, {Backspace}
-sendRaw, }
-return
-
+	send, {Enter}
+	send, {Tab}
+	send,   size(500, 500);
+	send, {Enter}
+	send,   surface.setResizable(true);
+	send, {Enter}
+	send, {Backspace}
+	send, {Backspace}
+	sendRaw, }
+	return
+	
 ; -------------------------------------
 ; CapsLock Modifier
 ; -------------------------------------
-!CapsLock::																							; Alt+ CapsLock Toggles CapsLock even though CapsLockState is set to always be off.
-GetKeyState, capsstate, CapsLock, T 
-if capsstate = U
-	SetCapsLockState, AlwaysOn
-else
-	SetCapsLockState, AlwaysOff
-return
-
-CapsLock & f::SendInput, Fuck {Enter}
-
-CapsLock & t::Run cmder.exe
-
-; -------------------------------------
-; Super key to move windows
-; -------------------------------------
-#LButton::
-
-CoordMode, Mouse, Relative
-MouseGetPos, cur_win_x, cur_win_y, window_id
-WinGet, window_minmax, MinMax, ahk_id %window_id%
-
-if window_minmax <> 0
-{
-  return
-}
-
-CoordMode, Mouse, Screen
-SetWinDelay, 0
-
-loop
-{
-	if !GetKeyState("LButton", "P")
-	{
-		break
-	}
-	MouseGetPos, cur_x, cur_y
-	WinMove, ahk_id %window_id%,, (cur_x - cur_win_x), (cur_y - cur_win_y)
-}
-
-return
-
-; -------------------------------------
-; Restore/Maximize with hotkey
-; -------------------------------------
-
-#x::																									; Maximize/Restore active window with Super+X.
-WinGet, active_id, ID, A
-WinGet, checkmax, MinMax, A
-If(checkmax == 1) {
-	WinGet, active_id, ID, A
-	WinRestore, ahk_id %active_id%
-} else {
-	WinGetClass, class, ahk_id %active_id%
-	If class not in ahk_class WorkerW,Shell_TrayWnd, Button, SysListView32,Progman,#32768 
-	WinMaximize, ahk_id %active_id%
-}
-return
+	!CapsLock::																							; Alt+ CapsLock Toggles CapsLock even though CapsLockState is set to always be off.
+	GetKeyState, capsstate, CapsLock, T 
+	if capsstate = U
+		SetCapsLockState, AlwaysOn
+	else
+		SetCapsLockState, AlwaysOff
+	return
+	
+	CapsLock & f::SendInput, Fuck {Enter}
+	
+	CapsLock & t::Run cmder.exe
