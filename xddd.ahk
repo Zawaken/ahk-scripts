@@ -102,6 +102,12 @@ sendRaw, {
     send, {Backspace}
 sendRaw, }
 return
+#Space::Winset, AlwaysOnTop, Toggle, A
+Toggle := !toggle
+ToolTip, %Toggle%
+Sleep, 3000
+ToolTip
+Return
 
 ; -------------------------------------
 ; CapsLock Modifier
@@ -115,9 +121,9 @@ else
 return
 
 CapsLock & f:: 
-	SendInput, Fuck
-	Sleep, 15
-	Send, {Enter}
+SendInput, Fuck
+Sleep, 15
+Send, {Enter}
 return
 
 CapsLock & t::Run cmder.exe
