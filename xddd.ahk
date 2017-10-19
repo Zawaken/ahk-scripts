@@ -18,7 +18,7 @@ menu, tray, Icon, %I_Icon%																				; Sets the tray icon to the value 
 ; Super hotkeys(win+r etc.)
 ; -------------------------------------
 ~LWin Up::return																						; Disables super in a way that it still works but doesn't open the startmenu but still works for hotkeys.
-#l::Shutdown, 0																						; Shortcut for locking the Computer.
+#l::DllCall("LockWorkStation")																						; Shortcut for locking the Computer.
 #r::Run %appdata%\Microsoft\Windows\Start Menu\Programs\System Tools\Run.lnk										; Shortcut to open the run dialog.
 #q::!F4																								; Super+Q to ALT+F4 (xKill if SuperF4 is running).
 #z::WinMinimize, A																						; Minimize Active window with Super+z.
@@ -83,7 +83,6 @@ return
 ; -------------------------------------
 ; Restore/Maximize with hotkey
 ; -------------------------------------
-
 #x::																									; Maximize/Restore active window with Super+X.
 WinGet, active_id, ID, A
 WinGet, checkmax, MinMax, A
@@ -176,19 +175,19 @@ sendRaw, {
 	send, {Backspace}
 	send, {Backspace}
 	sendRaw, }
-	return
+return
 	
 ; -------------------------------------
 ; CapsLock Modifier
 ; -------------------------------------
-	!CapsLock::																						; Alt+ CapsLock Toggles CapsLock even though CapsLockState is set to always be off.
-	GetKeyState, capsstate, CapsLock, T 
-	if capsstate = U
-		SetCapsLockState, AlwaysOn
-	else
-		SetCapsLockState, AlwaysOff
-	return
+!CapsLock::																							; Alt+ CapsLock Toggles CapsLock even though CapsLockState is set to always be off.
+GetKeyState, capsstate, CapsLock, T 
+if capsstate = U
+	SetCapsLockState, AlwaysOn
+else
+	SetCapsLockState, AlwaysOff
+return
 	
-	CapsLock & f::SendInput, Fuck {Enter}
+CapsLock & f::SendInput, Fuck {Enter}
 	
-	CapsLock & t::Run cmder.exe
+CapsLock & t::Run cmder.exe
