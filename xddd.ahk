@@ -12,13 +12,25 @@ I_Icon = %A_ScriptDir%\icons\terminal.ico																	; Defines I_Icon.
 IfExist, %I_Icon%																						; Tests if I_Icon exists.
 	menu, tray, Icon, %I_Icon%																				; Sets the tray icon to the value of I_Icon.
 
+Tooltip, xdd.ahk launched
+SetTimer, RemoveToolTip, 5000
+return
+
+RemoveToolTip:
+SetTimer, RemoveToolTip, Off
+Tooltip
+return
+
 +Esc::reload																							; Reload script with hotkey.
+
+^!e::Edit, %A_ScriptName%																				; Edit my shitty script lol.
+^+!e::Run, explorer.exe %A_ScriptDir%
 
 ; -------------------------------------
 ; Super hotkeys(win+r etc.)
 ; -------------------------------------
 ~LWin Up::return																						; Disables super in a way that it still works but doesn't open the startmenu but still works for hotkeys.
-#l::DllCall("LockWorkStation")																						; Shortcut for locking the Computer.
+#l::DllCall("LockWorkStation")																			; Shortcut for locking the Computer.
 #r::Run %appdata%\Microsoft\Windows\Start Menu\Programs\System Tools\Run.lnk										; Shortcut to open the run dialog.
 #q::!F4																								; Super+Q to ALT+F4 (xKill if SuperF4 is running).
 #z::WinMinimize, A																						; Minimize Active window with Super+z.
@@ -45,10 +57,18 @@ Return
 ; -------------------------------------
 #RButton::
 WinGetPos, , , W, H, A
-h -= 2
-w -= 2
+h -= 5
+w -= 5
 MouseMove, w, h
-MouseClick, Left,,,,,D
+MouseClick,Left,,,,,D
+Loop {
+	if (!GetKeyState("RButton","P")) {
+		MouseClick,Left,,,,,U
+		Break
+	}
+}
+WinGetPos, , ,w,h,A
+MouseMove, w/2, h/2
 return
 
 ; -------------------------------------
@@ -160,8 +180,6 @@ return
 Send, ``````{Space}
 return
 
-^!e::Edit, %A_ScriptName%																				; Edit my shitty script lol.
-
 ::;psize::																							; Void Setup in processing.
 send, void setup() 
 send, {Space}
@@ -175,19 +193,19 @@ sendRaw, {
 	send, {Backspace}
 	send, {Backspace}
 	sendRaw, }
-return
+	return
 	
 ; -------------------------------------
 ; CapsLock Modifier
 ; -------------------------------------
-!CapsLock::																							; Alt+ CapsLock Toggles CapsLock even though CapsLockState is set to always be off.
+	!CapsLock::																							; Alt+ CapsLock Toggles CapsLock even though CapsLockState is set to always be off.
 	GetKeyState, capsstate, CapsLock, T 
 	if capsstate = U
 		SetCapsLockState, AlwaysOn
 	else
 		SetCapsLockState, AlwaysOff
-return
+	return
 	
-CapsLock & f::SendInput, Fuck {Enter}
+	CapsLock & f::SendInput, Fuck {Enter}
 	
-CapsLock & t::Run cmder.exe
+	CapsLock & t::Run cmder.exe
