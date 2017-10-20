@@ -188,7 +188,7 @@ sendRaw, {
 	send, {Backspace}
 	send, {Backspace}
 	sendRaw, }
-	return
+return
 	
 ; -------------------------------------
 ; CapsLock Modifier
