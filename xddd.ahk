@@ -49,11 +49,6 @@ h -= 2
 w -= 2
 MouseMove, w, h
 MouseClick, Left,,,,,D
-loop {
-	GetKeyState, XD, RButton, P
-	If XD = U
-		Break
-}
 return
 
 ; -------------------------------------
