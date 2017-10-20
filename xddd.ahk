@@ -198,14 +198,14 @@ sendRaw, {
 ; -------------------------------------
 ; CapsLock Modifier
 ; -------------------------------------
-	!CapsLock::																							; Alt+ CapsLock Toggles CapsLock even though CapsLockState is set to always be off.
-	GetKeyState, capsstate, CapsLock, T 
+!CapsLock::																							; Alt+ CapsLock Toggles CapsLock even though CapsLockState is set to always be off.
+GetKeyState, capsstate, CapsLock, T 
 	if capsstate = U
 		SetCapsLockState, AlwaysOn
 	else
 		SetCapsLockState, AlwaysOff
-	return
+return
 	
-	CapsLock & f::SendInput, Fuck {Enter}
+CapsLock & f::SendInput, Fuck {Enter}
 	
-	CapsLock & t::Run cmder.exe
+CapsLock & t::Run cmder.exe
