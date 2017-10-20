@@ -10,7 +10,7 @@ DetectHiddenWindows, On																					; Make it so that the script detects
 
 I_Icon = %A_ScriptDir%\icons\terminal.ico																	; Defines I_Icon.
 IfExist, %I_Icon%																						; Tests if I_Icon exists.
-	menu, tray, Icon, %I_Icon%																				; Sets the tray icon to the value of I_Icon.
+menu, tray, Icon, %I_Icon%																				; Sets the tray icon to the value of I_Icon.
 
 Tooltip, xdd.ahk launched
 SetTimer, RemoveToolTip, 5000
@@ -26,9 +26,9 @@ return
 ^!e::Edit, %A_ScriptName%																				; Edit my shitty script lol.
 ^+!e::Run, explorer.exe %A_ScriptDir%
 
-; -------------------------------------
+; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ; Super hotkeys(win+r etc.)
-; -------------------------------------
+; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~LWin Up::return																						; Disables super in a way that it still works but doesn't open the startmenu but still works for hotkeys.
 #l::DllCall("LockWorkStation")																			; Shortcut for locking the Computer.
 #r::Run %appdata%\Microsoft\Windows\Start Menu\Programs\System Tools\Run.lnk										; Shortcut to open the run dialog.
