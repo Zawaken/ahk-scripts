@@ -55,39 +55,35 @@ Return
 ; -------------------------------------
 ; Resize with Super+RButton
 ; -------------------------------------
-#RButton::
-WinGetPos, , , W, H, A
-H -= 5
-W -= 5
-MouseMove, W, H
-MouseClick,Left,,,,,D
-Loop {
-	if (!GetKeyState("RButton","P")) {
-		MouseClick,Left,,,,,U
-		Break
+#RButton::																							; Hotkey to resize windows.
+WinGetPos, , , W, H, A																					; Gets width and height from active window and stores them into the variables W and H.
+H -= 5																								; Sets the variable H to H-5.
+W -= 5																								; Sets the variable W to W-5.
+MouseMove, W, H																						; Moves mouse to coordinates of W and H.
+MouseClick,Left,,,,,D																					; Clicks left mouse button and holds it down.
+Loop {																								; Starts a loop.
+	if (!GetKeyState("RButton","P")) {																		; Checks if RButton is pressed or not.
+		MouseClick,Left,,,,,U																			; Releases left mouse button when RButton is released.
+		Break																						; Stops the loop.
 	}
 }
-WinGetPos, , ,W,H,A
-MouseMove, W/2, H/2
+WinGetPos, , ,W,H,A																						; Gets width and height from active window after window is resized.
+MouseMove, W/2, H/2																						; Moves mouse to the middle of the window.
 return
 
 ; -------------------------------------
 ; Super key to move windows
 ; -------------------------------------
 #LButton::
-
 CoordMode, Mouse, Relative
 MouseGetPos, cur_win_x, cur_win_y, window_id
 WinGet, window_minmax, MinMax, ahk_id %window_id%
-
 if window_minmax <> 0
 {
 	return
 }
-
 CoordMode, Mouse, Screen
 SetWinDelay, 0
-
 loop
 {
 	if !GetKeyState("LButton", "P")
@@ -97,7 +93,6 @@ loop
 	MouseGetPos, cur_x, cur_y
 	WinMove, ahk_id %window_id%,, (cur_x - cur_win_x), (cur_y - cur_win_y)
 }
-
 return
 
 ; -------------------------------------
