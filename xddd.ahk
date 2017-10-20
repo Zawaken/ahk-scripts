@@ -10,7 +10,7 @@ DetectHiddenWindows, On																					; Make it so that the script detects
 
 I_Icon = %A_ScriptDir%\icons\terminal.ico																	; Defines I_Icon.
 IfExist, %I_Icon%																						; Tests if I_Icon exists.
-menu, tray, Icon, %I_Icon%																				; Sets the tray icon to the value of I_Icon.
+	menu, tray, Icon, %I_Icon%																				; Sets the tray icon to the value of I_Icon.
 
 +Esc::reload																							; Reload script with hotkey.
 
@@ -49,6 +49,11 @@ h -= 2
 w -= 2
 MouseMove, w, h
 MouseClick, Left,,,,,D
+loop {
+	GetKeyState, XD, RButton, P
+	If XD = U
+		Break
+}
 return
 
 ; -------------------------------------
@@ -181,11 +186,11 @@ return
 ; CapsLock Modifier
 ; -------------------------------------
 !CapsLock::																							; Alt+ CapsLock Toggles CapsLock even though CapsLockState is set to always be off.
-GetKeyState, capsstate, CapsLock, T 
-if capsstate = U
-	SetCapsLockState, AlwaysOn
-else
-	SetCapsLockState, AlwaysOff
+	GetKeyState, capsstate, CapsLock, T 
+	if capsstate = U
+		SetCapsLockState, AlwaysOn
+	else
+		SetCapsLockState, AlwaysOff
 return
 	
 CapsLock & f::SendInput, Fuck {Enter}
