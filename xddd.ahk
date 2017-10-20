@@ -57,9 +57,9 @@ Return
 ; -------------------------------------
 #RButton::
 WinGetPos, , , W, H, A
-h -= 5
-w -= 5
-MouseMove, w, h
+H -= 5
+W -= 5
+MouseMove, W, H
 MouseClick,Left,,,,,D
 Loop {
 	if (!GetKeyState("RButton","P")) {
@@ -67,8 +67,8 @@ Loop {
 		Break
 	}
 }
-WinGetPos, , ,w,h,A
-MouseMove, w/2, h/2
+WinGetPos, , ,W,H,A
+MouseMove, W/2, H/2
 return
 
 ; -------------------------------------
