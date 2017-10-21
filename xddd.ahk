@@ -34,6 +34,7 @@ return
 #r::Run %appdata%\Microsoft\Windows\Start Menu\Programs\System Tools\Run.lnk										; Shortcut to open the run dialog.
 #q::!F4																								; Super+Q to ALT+F4 (xKill if SuperF4 is running).
 #z::WinMinimize, A																						; Minimize Active window with Super+z.
+#Enter::Run, cmder.exe																					; Runs Cmder with Super+Return.
 return
 
 ; -------------------------------------
