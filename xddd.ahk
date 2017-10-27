@@ -35,6 +35,7 @@ return
 #q::!F4																								; Super+Q to ALT+F4 (xKill if SuperF4 is running).
 #z::WinMinimize, A																						; Minimize Active window with Super+z.
 #Enter::Run, cmder.exe																					; Runs Cmder with Super+Return.
+#+e::Run explorer.exe		 																			; Runs the file explorer when Shift+Super+e is pressed.
 return
 
 ; -------------------------------------
