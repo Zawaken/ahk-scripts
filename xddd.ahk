@@ -202,7 +202,15 @@ GetKeyState, capsstate, CapsLock, T
 	else
 		SetCapsLockState, AlwaysOff
 return
-	
+
+!NumLock::
+GetKeyState, numstate, NumLock, T
+	if numstate = U
+		SetNumLockState, AlwaysOn
+	else
+		SetNumLockState, AlwaysOff
+return
+
 CapsLock & f::SendInput, Fuck {Enter}
-	
+
 CapsLock & t::Run cmder.exe
