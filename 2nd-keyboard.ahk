@@ -92,7 +92,7 @@ s::
 	Run "C:\Program Files (x86)\Steam\Steam.exe"
 return
 
-g::return
+g::Run "%A_Desktop%\Github Desktop.lnk"
 h::return
 j::return
 k::return
