@@ -7,7 +7,7 @@ SetCapsLockState, AlwaysOff																				; Set CapsLock to always be toggl
 SetNumLockState, AlwaysOn																				; Set NumLock to always be toggled on.
 SetWorkingDir %A_ScriptDir%																				; Set persistent Script Directory.
 DetectHiddenWindows, On																					; Make it so that the script detects hidden windows.
-
+#EscapeChar ¤
 I_Icon = %A_ScriptDir%\icons\terminal.ico																	; Defines I_Icon.
 IfExist, %I_Icon%																						; Tests if I_Icon exists.
 menu, tray, Icon, %I_Icon%																				; Sets the tray icon to the value of I_Icon.
@@ -173,10 +173,6 @@ return
 ; -------------------------------------
 ; Random hotkeys and text replacements
 ; -------------------------------------
-^+m::																								; Code markdown.
-Send, ``````{Space}
-return
-
 ::;psize::																							; Void Setup in processing.
 send, void setup() 
 send, {Space}
@@ -189,28 +185,56 @@ sendRaw, {
 	send, {Enter}
 	send, {Backspace}
 	send, {Backspace}
-	sendRaw, }
-return
-	
-; -------------------------------------
-; CapsLock Modifier
-; -------------------------------------
-!CapsLock::																							; Alt+ CapsLock Toggles CapsLock even though CapsLockState is set to always be off.
-GetKeyState, capsstate, CapsLock, T 
-	if capsstate = U
-		SetCapsLockState, AlwaysOn
-	else
-		SetCapsLockState, AlwaysOff
+sendRaw, }
 return
 
+; -------------------------------------
+; CapsLock Modifier and a Toggle for NumLock
+; -------------------------------------
 !NumLock::
 GetKeyState, numstate, NumLock, T
-	if numstate = U
-		SetNumLockState, AlwaysOn
-	else
-		SetNumLockState, AlwaysOff
+if numstate = U
+	SetNumLockState, AlwaysOn
+else
+	SetNumLockState, AlwaysOff
+return
+
+!CapsLock::																							; Alt+ CapsLock Toggles CapsLock even though CapsLockState is set to always be off.
+GetKeyState, capsstate, CapsLock, T 
+if capsstate = U
+	SetCapsLockState, AlwaysOn
+else
+	SetCapsLockState, AlwaysOff
 return
 
 CapsLock & f::SendInput, Fuck {Enter}
 
 CapsLock & t::Run cmder.exe
+
+CapsLock & v::
+Gosub, clip2
+return
+
+; I stole this from runar, fuqme
+
+clip1:
+	sendInput, ¤`¤`¤`{space}autohotkey
+	sleep, 16
+	SendInput, {Enter}
+	sleep, 16
+	sendInput, {Control Down} v {Control Up}
+	sleep, 16
+	sendInput, ¤`¤`¤`{Enter}
+	sleep, 16
+	sendInput, {Enter}
+	Clipboard := oclip
+	Sleep, 5000
+return
+
+clip2:
+	String=%clipboard%
+	oclip=%clipboard%
+	Clipboard := String
+	StringReplace, Clipboard, Clipboard, ¤¤`, ¤¤¤`, All
+Gosub, clip1
+return
