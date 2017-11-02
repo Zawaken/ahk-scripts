@@ -3,6 +3,7 @@
 ; -------------------------------------
 #SingleInstance force																					; Skip replace dialog.
 #Persistent																							; Keeps a script running permanently.
+SetTitleMatchMode 2																						; Allows WinActive to work with for example "- YouTube".
 SetCapsLockState, AlwaysOff																				; Set CapsLock to always be toggled off.
 SetNumLockState, AlwaysOn																				; Set NumLock to always be toggled on.
 SetWorkingDir %A_ScriptDir%																				; Set persistent Script Directory.
