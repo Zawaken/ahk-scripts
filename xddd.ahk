@@ -212,29 +212,30 @@ CapsLock & f::SendInput, Fuck {Enter}
 CapsLock & t::Run cmder.exe
 
 CapsLock & v::
+lang = autohotkey
 Gosub, clip2
 return
 
 ; I stole this from runar, fuqme
 
 clip1:
-	sendInput, ¤`¤`¤`{space}autohotkey
-	sleep, 16
-	SendInput, {Enter}
-	sleep, 16
-	sendInput, {Control Down} v {Control Up}
-	sleep, 16
-	sendInput, ¤`¤`¤`{Enter}
-	sleep, 16
-	sendInput, {Enter}
-	Clipboard := oclip
-	Sleep, 5000
+sendInput, ¤`¤`¤`{space}%lang%
+sleep, 16
+SendInput, {Enter}
+sleep, 16
+sendInput, {Control Down} v {Control Up}
+sleep, 16
+sendInput, ¤`¤`¤`{Enter}
+sleep, 16
+sendInput, {Enter}
+Clipboard := oclip
 return
 
 clip2:
-	String=%clipboard%
-	oclip=%clipboard%
-	Clipboard := String
-	StringReplace, Clipboard, Clipboard, ¤¤`, ¤¤¤`, All
+String=%clipboard%
+oclip=%clipboard%
+Clipboard := String
+StringReplace, Clipboard, Clipboard, ¤`, ¤¤`, All
+Sleep, 100
 Gosub, clip1
 return
