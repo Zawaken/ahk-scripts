@@ -240,3 +240,17 @@ StringReplace, Clipboard, Clipboard, ¤`, ¤¤`, All
 Sleep, 100
 Gosub, clip1
 return
+
+; -------------------------------------
+; IfWinActive shit
+; -------------------------------------
+#IfWinActive, ahk_exe osu!.exe
+	AppsKey::
+SendInput, {!}recommend
+sleep, 100
+SendInput, {Enter Down}
+Sleep, 25
+SendInput, {Enter Up}
+Sleep, 5000
+return
+#IfWinActive
