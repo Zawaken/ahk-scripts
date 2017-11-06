@@ -172,24 +172,6 @@ send {Media_Stop}
 return
 
 ; -------------------------------------
-; Random hotkeys and text replacements
-; -------------------------------------
-::;psize::																							; Void Setup in processing.
-send, void setup() 
-send, {Space}
-sendRaw, {
-	send, {Enter}
-	send, {Tab}
-	send,   size(500, 500);
-	send, {Enter}
-	send,   surface.setResizable(true);
-	send, {Enter}
-	send, {Backspace}
-	send, {Backspace}
-sendRaw, }
-return
-
-; -------------------------------------
 ; CapsLock Modifier and a Toggle for NumLock
 ; -------------------------------------
 !NumLock::
@@ -245,12 +227,12 @@ return
 ; IfWinActive shit
 ; -------------------------------------
 #IfWinActive, ahk_exe osu!.exe
-AppsKey::
-	SendInput, {!}recommend
-	sleep, 100
-	SendInput, {Enter Down}
-	Sleep, 25
-	SendInput, {Enter Up}
-	Sleep, 5000
+	AppsKey::
+SendInput, {!}recommend
+sleep, 100
+SendInput, {Enter Down}
+Sleep, 25
+SendInput, {Enter Up}
+Sleep, 5000
 return
 #IfWinActive
