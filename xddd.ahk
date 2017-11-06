@@ -245,12 +245,12 @@ return
 ; IfWinActive shit
 ; -------------------------------------
 #IfWinActive, ahk_exe osu!.exe
-	AppsKey::
-SendInput, {!}recommend
-sleep, 100
-SendInput, {Enter Down}
-Sleep, 25
-SendInput, {Enter Up}
-Sleep, 5000
+AppsKey::
+	SendInput, {!}recommend
+	sleep, 100
+	SendInput, {Enter Down}
+	Sleep, 25
+	SendInput, {Enter Up}
+	Sleep, 5000
 return
 #IfWinActive
