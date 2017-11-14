@@ -236,3 +236,5 @@ SendInput, {Enter Up}
 Sleep, 5000
 return
 #IfWinActive
+	
+#IFWinActive, ahk_exe WINWORD.exe
