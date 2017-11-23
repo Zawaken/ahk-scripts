@@ -228,7 +228,7 @@ return
 ; -------------------------------------
 #IfWinActive, ahk_exe osu!.exe
 	AppsKey::
-SendInput, {!}recommend
+SendInput, {!}r
 sleep, 100
 SendInput, {Enter Down}
 Sleep, 25
