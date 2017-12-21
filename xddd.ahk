@@ -143,6 +143,7 @@ Ins::return																							; Currently disables Insert.
 ::;spidgary::/╲/\(╭ ᐛ ╮)/\╱\
 :*:;proton::zawaken@protonmail.com
 :*:;gmail::rsk1997@gmail.com
+:*:;reload::>>reload cogs.
 return
 
 ; -------------------------------------
