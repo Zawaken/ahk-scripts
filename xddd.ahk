@@ -171,6 +171,16 @@ return
 NumpadDot & NumpadAdd::																					; Stop Media.
 send {Media_Stop}
 return
+NumpadDot & Numpad9::																					; Spotify Volume Up
+DetectHiddenWindows, On
+ControlSend, ahk_parent, ^{Up}, ahk_class SpotifyMainWindow
+DetectHiddenWindows, Off
+return
+NumpadDot & Numpad8::																					; Spotify Volume Down
+DetectHiddenWindows, On
+ControlSend, ahk_parent, ^{Down}, ahk_class SpotifyMainWindow
+DetectHiddenWindows, Off
+return
 
 ; -------------------------------------
 ; CapsLock Modifier and a Toggle for NumLock
@@ -237,5 +247,3 @@ SendInput, {Enter Up}
 Sleep, 5000
 return
 #IfWinActive
-	
-#IFWinActive, ahk_exe WINWORD.exe
