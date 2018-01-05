@@ -37,6 +37,7 @@ return
 #z::WinMinimize, A																						; Minimize Active window with Super+z.
 #Enter::Run, cmder.exe																					; Runs Cmder with Super+Return.
 #+e::Run explorer.exe		 																			; Runs the file explorer when Shift+Super+e is pressed.
+#+w::Run WINWORD.exe																						; runs word.exe
 return
 
 ; -------------------------------------
