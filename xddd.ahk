@@ -8,7 +8,7 @@ SetCapsLockState, AlwaysOff																				; Set CapsLock to always be toggl
 SetNumLockState, AlwaysOn																				; Set NumLock to always be toggled on.
 SetWorkingDir %A_ScriptDir%																				; Set persistent Script Directory.
 DetectHiddenWindows, On																					; Make it so that the script detects hidden windows.
-#EscapeChar ¤
+#EscapeChar ¤																							; Sets the escape char to '¤'.
 I_Icon = %A_ScriptDir%\icons\terminal.ico																	; Defines I_Icon.
 IfExist, %I_Icon%																						; Tests if I_Icon exists.
 menu, tray, Icon, %I_Icon%																				; Sets the tray icon to the value of I_Icon.

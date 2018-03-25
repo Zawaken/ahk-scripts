@@ -1,27 +1,30 @@
 ﻿#SingleInstance force
+I_Icon = %A_ScriptDir%\icons\keyboard.ico
+IfExist, %I_Icon%
+menu, tray, Icon, %I_Icon%
 
 !+Esc::reload
 return
 
 #if (getKeyState("F23", "P"))
-F23::return
+	F23::return
 
 numpad0::
-	SendInput, hehe xd im gay lol fuqoff
-	Sleep, 15
-	Send, {Enter}
+SendInput, hehe xd im gay lol fuqoff
+Sleep, 15
+Send, {Enter}
 return
 
 numpad1::
-	SendInput, lmao xd lol rofl ialmaorn roflmao XD lawl Cx
-	Sleep, 15
-	Send, {Enter}
+SendInput, lmao xd lol rofl ialmaorn roflmao XD lawl Cx
+Sleep, 15
+Send, {Enter}
 return
 
 numpad2::
-	SendInput, Rawr xd
-	Sleep, 15
-	Send, {Enter}
+SendInput, Rawr xd
+Sleep, 15
+Send, {Enter}
 return
 
 numpad3::
@@ -29,9 +32,9 @@ Run "%UserProfile%\AppData\Local\osu!\osu!.exe"
 return
 
 numpad4::
-	SendInput, Heck off
-	Sleep, 15
-	Send, {Enter}
+SendInput, Heck off
+Sleep, 15
+Send, {Enter}
 return
 
 numpad5::return
@@ -80,7 +83,7 @@ e::return
 u::return
 i::return
 o::
-	Run "%UserProfile%\AppData\Local\osu!\osu!.exe"
+Run "%UserProfile%\AppData\Local\osu!\osu!.exe"
 return
 p::return
 [::return
@@ -89,7 +92,7 @@ p::return
 capslock::return
 a::return
 s::
-	Run "C:\Program Files (x86)\Steam\Steam.exe"
+Run "C:\Program Files (x86)\Steam\Steam.exe"
 return
 
 g::Run "%A_Desktop%\Github Desktop.lnk"
@@ -103,13 +106,13 @@ enter::return
 Lshift::return
 z::return
 x::
-	SendInput, lmao xd lol rofl ialmaorn roflmao XD lawl Cx {Enter}
+SendInput, lmao xd lol rofl ialmaorn roflmao XD lawl Cx {Enter}
 return
 c::return
 v::return
 b::return
 n::
-	SendInput, England is my city. {Enter}
+SendInput, England is my city. {Enter}
 return
 m::return
 ,::return
@@ -140,20 +143,20 @@ return
 
 f::
 IfWinNotExist, ahk_class MozillaWindowClass
-    run, firefox.exe
+run, firefox.exe
 if WinActive("ahk_class MozillaWindowClass")
-    send, ^{tab}
+	send, ^{tab}
 else
-    WinActivate ahk_class MozillaWindowClass
+	WinActivate ahk_class MozillaWindowClass
 return
 
 y::
 IfWinNotExist, ahk_class YandexBrowser_WidgetWin_1
-    run, %UserProfile%\AppData\Local\Yandex\YandexBrowser\Application\browser.exe
+run, %UserProfile%\AppData\Local\Yandex\YandexBrowser\Application\browser.exe
 if WinActive("ahk_class YandexBrowser_WidgetWin_1")
-    send, ^{tab}
+	send, ^{tab}
 else
-    WinActivate ahk_class YandexBrowser_WidgetWin_1
+	WinActivate ahk_class YandexBrowser_WidgetWin_1
 return
 
 t::Run cmder.exe
@@ -162,11 +165,11 @@ r::reload
 
 d::
 IfWinNotExist, ahk_exe DiscordCanary.exe
-	Run "%UserProfile%\AppData\Local\DiscordCanary\app-0.0.164\DiscordCanary.exe"
+Run "%UserProfile%\AppData\Local\DiscordCanary\app-0.0.164\DiscordCanary.exe"
 if WinActive("ahk_exe DiscordCanary.exe")
-    send, ^{tab}
+	send, ^{tab}
 else
-    WinActivate ahk_exe DiscordCanary.exe
+	WinActivate ahk_exe DiscordCanary.exe
 return
 
 f1::TaskbarMove("Top")
