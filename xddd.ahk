@@ -31,6 +31,7 @@ return
 ; Super hotkeys(win+r etc.)
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~LWin Up::return																						; Disables super in a way that it still works but doesn't open the startmenu but still works for hotkeys.
+~RWin Up::return																						; Disables right super key (for dumb keyboards like the K70)
 #l::DllCall("LockWorkStation")																			; Shortcut for locking the Computer.
 #r::Run %appdata%\Microsoft\Windows\Start Menu\Programs\System Tools\Run.lnk										; Shortcut to open the run dialog.
 #q::!F4																								; Super+Q to ALT+F4 (xKill if SuperF4 is running).
