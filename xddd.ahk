@@ -161,17 +161,14 @@ return
 ; Numpad Media Controls
 ; -------------------------------------
 NumpadDot::return
-NumpadDot & NumpadSub::																					; Next Media.
+#^l::																								; Next Media.
 send {Media_Next}
 return
-NumpadDot & NumpadDiv::																					; Previous Media.
+#^j::																								; Previous Media.
 send {Media_Prev}
 return
-NumpadDot & NumpadMult::																					; Play/Pause Media.
+#^k::																								; Play/Pause Media.
 send {Media_Play_Pause}
-return
-NumpadDot & NumpadAdd::																					; Stop Media.
-send {Media_Stop}
 return
 NumpadDot & Numpad9::																					; Spotify Volume Up
 DetectHiddenWindows, On
