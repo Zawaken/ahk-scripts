@@ -246,3 +246,14 @@ SendInput, {Enter Up}
 Sleep, 5000
 return
 #IfWinActive
+	
+#If WinActive("ahk_class Shell_TrayWnd") and WinActive("ahk_exe explorer.exe")
+	~MButton Up::
+run, taskmgr.exe
+WinWait, ahk_class TaskManagerWindow
+WinActivate, ahk_class TaskManagerWindow
+return
+#IfWinNotActive, ahk_class Shell_TrayWnd
+	MButton::Mbutton
+return
+#IfWinActive
