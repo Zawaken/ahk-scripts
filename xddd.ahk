@@ -158,7 +158,7 @@ run, C:\Program Files (x86)\VB\Voicemeeter\voicemeeterpro.exe													; Laun
 return
 
 ; -------------------------------------
-; Numpad Media Controls
+; Media Controls
 ; -------------------------------------
 NumpadDot::return
 #^l::																								; Next Media.
