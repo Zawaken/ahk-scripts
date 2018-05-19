@@ -114,8 +114,8 @@ b::return
 n::
 SendInput, England is my city. {Enter}
 return
-m::return
-,::return
+m::+ScrollLock
+,::+Pause
 .::return
 /::return
 Rshift::return
