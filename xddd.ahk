@@ -160,7 +160,6 @@ return
 ; -------------------------------------
 ; Media Controls
 ; -------------------------------------
-NumpadDot::return
 #^l::																								; Next Media.
 send {Media_Next}
 return
@@ -170,16 +169,7 @@ return
 #^k::																								; Play/Pause Media.
 send {Media_Play_Pause}
 return
-NumpadDot & Numpad9::																					; Spotify Volume Up
-DetectHiddenWindows, On
-ControlSend, ahk_parent, ^{Up}, ahk_class SpotifyMainWindow
-DetectHiddenWindows, Off
-return
-NumpadDot & Numpad8::																					; Spotify Volume Down
-DetectHiddenWindows, On
-ControlSend, ahk_parent, ^{Down}, ahk_class SpotifyMainWindow
-DetectHiddenWindows, Off
-return
+
 
 ; -------------------------------------
 ; CapsLock Modifier and a Toggle for NumLock
