@@ -1,17 +1,17 @@
 ﻿; -------------------------------------
 ; Script behaviour
 ; -------------------------------------
-#SingleInstance force																					; Skip replace dialog.
-#Persistent																							; Keeps a script running permanently.
-SetTitleMatchMode 2																						; Allows WinActive to work with for example "- YouTube".
-SetCapsLockState, AlwaysOff																				; Set CapsLock to always be toggled off.
-SetNumLockState, AlwaysOn																				; Set NumLock to always be toggled on.
-SetWorkingDir %A_ScriptDir%																				; Set persistent Script Directory.
-DetectHiddenWindows, On																					; Make it so that the script detects hidden windows.
-#EscapeChar ¤																							; Sets the escape char to '¤'.
-I_Icon = %A_ScriptDir%\icons\terminal.ico																	; Defines I_Icon.
-IfExist, %I_Icon%																						; Tests if I_Icon exists.
-menu, tray, Icon, %I_Icon%																				; Sets the tray icon to the value of I_Icon.
+#SingleInstance force				; Skip replace dialog.
+#Persistent					; Keeps a script running permanently.
+SetTitleMatchMode 2				; Allows WinActive to work with for example "- YouTube".
+SetCapsLockState, AlwaysOff			; Set CapsLock to always be toggled off.
+SetNumLockState, AlwaysOn			; Set NumLock to always be toggled on.
+SetWorkingDir %A_ScriptDir%			; Set persistent Script Directory.
+DetectHiddenWindows, On				; Make it so that the script detects hidden windows.
+#EscapeChar ¤					; Sets the escape char to '¤'.
+I_Icon = %A_ScriptDir%\icons\terminal.ico	; Defines I_Icon.
+IfExist, %I_Icon% 				; Tests if I_Icon exists.
+menu, tray, Icon, %I_Icon%			; Sets the tray icon to the value of I_Icon.
 
 Tooltip, xdd.ahk launched
 SetTimer, RemoveToolTip, 5000
@@ -22,57 +22,57 @@ SetTimer, RemoveToolTip, Off
 Tooltip
 return
 
-+Esc::reload																							; Reload script with hotkey.
++Esc::reload					; Reload script with hotkey.
 
-^!e::Edit, %A_ScriptName%																				; Edit my shitty script lol.
+^!e::Edit, %A_ScriptName%			; Edit my shitty script lol.
 ^+!e::Run, explorer.exe %A_ScriptDir%
 
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ; Super hotkeys(win+r etc.)
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-~LWin Up::return																						; Disables super in a way that it still works but doesn't open the startmenu but still works for hotkeys.
-~RWin Up::return																						; Disables right super key (for dumb keyboards like the K70)
-#l::DllCall("LockWorkStation")																			; Shortcut for locking the Computer.
-#r::Run %appdata%\Microsoft\Windows\Start Menu\Programs\System Tools\Run.lnk										; Shortcut to open the run dialog.
-#q::!F4																								; Super+Q to ALT+F4 (xKill if SuperF4 is running).
-#z::WinMinimize, A																						; Minimize Active window with Super+z.
-#Enter::Run, cmder.exe																					; Runs Cmder with Super+Return.
-#+e::Run explorer.exe		 																			; Runs the file explorer when Shift+Super+e is pressed.
+~LWin Up::return				; Disables super in a way that it still works but doesn't open the startmenu but still works for hotkeys.
+~RWin Up::return				; Disables right super key (for dumb keyboards like the K70)
+#l::DllCall("LockWorkStation")			; Shortcut for locking the Computer.
+#r::Run %appdata%\Microsoft\Windows\Start Menu\Programs\System Tools\Run.lnk	; Shortcut to open the run dialog.
+#q::!F4						; Super+Q to ALT+F4 (xKill if SuperF4 is running).
+#z::WinMinimize, A				; Minimize Active window with Super+z.
+#Enter::Run, cmder.exe				; Runs Cmder with Super+Return.
+#+e::Run explorer.exe		 		; Runs the file explorer when Shift+Super+e is pressed.
 return
 
 ; -------------------------------------
 ; Always on Top
 ; -------------------------------------
-#Space::																								; Super+Space to make window stay on top.
-Winset, AlwaysOnTop, Toggle, A																			; Toggles the attribute AlwaysOnTop.
+#Space::					; Super+Space to make window stay on top.
+Winset, AlwaysOnTop, Toggle, A			; Toggles the attribute AlwaysOnTop.
 mousegetpos, x, y, fuck
 WinGet, ExStyle, ExStyle, ahk_id %fuck%
-If (ExStyle & 0x8)																						; 0x8 Checks if the window is AlwaysOnTop or not
+If (ExStyle & 0x8)				; 0x8 Checks if the window is AlwaysOnTop or not
 	ExStyle = On Top
 Else
 	ExStyle = Not On Top
-ToolTip, %exstyle%																						; Shows a ToolTip that displays AlwaysOnTop or Not AlwaysOnTop depending on what state AlwaysOnTop is in.
-Sleep, 1500																							; Sleeps for 1.5 Seconds.
-ToolTip																								; Removes the ToolTip.
+ToolTip, %exstyle%				; Shows a ToolTip that displays AlwaysOnTop or Not AlwaysOnTop depending on what state AlwaysOnTop is in.
+Sleep, 1500					; Sleeps for 1.5 Seconds.
+ToolTip						; Removes the ToolTip.
 Return
 
 ; -------------------------------------
 ; Resize with Super+RButton
 ; -------------------------------------
-#RButton::																							; Hotkey to resize windows.
-WinGetPos, , , W, H, A																					; Gets width and height from active window and stores them into the variables W and H.
-H -= 5																								; Sets the variable H to H-5.
-W -= 5																								; Sets the variable W to W-5.
-MouseMove, W, H																						; Moves mouse to coordinates of W and H.
-MouseClick,Left,,,,,D																					; Clicks left mouse button and holds it down.
-Loop {																								; Starts a loop.
-	if (!GetKeyState("RButton","P")) {																		; Checks if RButton is pressed or not.
-		MouseClick,Left,,,,,U																			; Releases left mouse button when RButton is released.
-		Break																						; Stops the loop.
+#RButton::					; Hotkey to resize windows.
+WinGetPos, , , W, H, A				; Gets width and height from active window and stores them into the variables W and H.
+H -= 5						; Sets the variable H to H-5.
+W -= 5						; Sets the variable W to W-5.
+MouseMove, W, H					; Moves mouse to coordinates of W and H.
+MouseClick,Left,,,,,D				; Clicks left mouse button and holds it down.
+Loop {						; Starts a loop.
+	if (!GetKeyState("RButton","P")) {	; Checks if RButton is pressed or not.
+		MouseClick,Left,,,,,U		; Releases left mouse button when RButton is released.
+		Break				; Stops the loop.
 	}
 }
-WinGetPos, , ,W,H,A																						; Gets width and height from active window after window is resized.
-MouseMove, W/2, H/2																						; Moves mouse to the middle of the window.
+WinGetPos, , ,W,H,A				; Gets width and height from active window after window is resized.
+MouseMove, W/2, H/2				; Moves mouse to the middle of the window.
 return
 
 ; -------------------------------------
@@ -102,7 +102,7 @@ return
 ; -------------------------------------
 ; Restore/Maximize with hotkey
 ; -------------------------------------
-#x::																									; Maximize/Restore active window with Super+X.
+#x::						; Maximize/Restore active window with Super+X.
 WinGet, active_id, ID, A
 WinGet, checkmax, MinMax, A
 If(checkmax == 1) {
@@ -110,7 +110,7 @@ If(checkmax == 1) {
 	WinRestore, ahk_id %active_id%
 } else {
 	WinGetClass, class, ahk_id %active_id%
-	If class not in ahk_class WorkerW,Shell_TrayWnd, Button, SysListView32,Progman,#32768 
+	If class not in ahk_class WorkerW,Shell_TrayWnd, Button, SysListView32,Progman,#32768
 		WinMaximize, ahk_id %active_id%
 }
 return
@@ -118,12 +118,12 @@ return
 ; -------------------------------------
 ; Home area remap
 ; -------------------------------------
-PgDn::return																							; Currently disables PageDown.
-PgUp::return																							; Currently disables PageUp.
-End::return																							; Currently disables End.
-Home::return																							; Currently disables Home.
-Ins::return																							; Currently disables Insert.
-!Home::Home																							; Enables Home with Alt+Home
+PgDn::return					; Currently disables PageDown.
+PgUp::return					; Currently disables PageUp.
+End::return					; Currently disables End.
+Home::return					; Currently disables Home.
+Ins::return					; Currently disables Insert.
+!Home::Home					; Enables Home with Alt+Home
 
 ; -------------------------------------
 ; Text replacement, and other binds
@@ -152,21 +152,21 @@ return
 ; Restart Voicemeeter Banana
 ; -------------------------------------
 ^+!r::
-Process, Close, voicemeeterpro.exe																			; Ends the process Voicemeeterpro.exe.
-Sleep, 500																							; Wait for 500ms.
-run, C:\Program Files (x86)\VB\Voicemeeter\voicemeeterpro.exe													; Launch VoiceMeeter Banana.
+Process, Close, voicemeeterpro.exe		; Ends the process Voicemeeterpro.exe.
+Sleep, 500					; Wait for 500ms.
+run, C:\Program Files (x86)\VB\Voicemeeter\voicemeeterpro.exe	; Launch VoiceMeeter Banana.
 return
 
 ; -------------------------------------
 ; Media Controls
 ; -------------------------------------
-#^l::																								; Next Media.
+#^l::						; Next Media.
 send {Media_Next}
 return
-#^j::																								; Previous Media.
+#^j::						; Previous Media.
 send {Media_Prev}
 return
-#^k::																								; Play/Pause Media.
+#^k::						; Play/Pause Media.
 send {Media_Play_Pause}
 return
 
@@ -182,8 +182,8 @@ else
 	SetNumLockState, AlwaysOff
 return
 
-!CapsLock::																							; Alt+ CapsLock Toggles CapsLock even though CapsLockState is set to always be off.
-GetKeyState, capsstate, CapsLock, T 
+!CapsLock::					; Alt+ CapsLock Toggles CapsLock even though CapsLockState is set to always be off.
+GetKeyState, capsstate, CapsLock, T
 if capsstate = U
 	SetCapsLockState, AlwaysOn
 else
@@ -236,7 +236,7 @@ SendInput, {Enter Up}
 Sleep, 5000
 return
 #IfWinActive
-	
+
 #If WinActive("ahk_class Shell_TrayWnd") and WinActive("ahk_exe explorer.exe")
 	~MButton Up::
 run, taskmgr.exe
@@ -247,3 +247,12 @@ return
 	MButton::Mbutton
 return
 #IfWinActive
+
+~ScrollLock::
+
+SLStatus := GetKeyState("ScrollLock", "T")
+SPI_SETACTIVEWINDOWTRACKING = 0x1001
+SPIF_UPDATEINIFILE = 1
+SPIF_SENDCHANGE = 2
+DllCall("SystemParametersInfo",UInt,SPI_SETACTIVEWINDOWTRACKING,UInt,0,UInt,SLStatus,UInt,SPIF_UPDATEINIFILE | SPIF_SENDCHANGE)
+return
